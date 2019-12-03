@@ -3,4 +3,4 @@
 """
 __author__ = "ldh"
 
-
+DEBUG = True
