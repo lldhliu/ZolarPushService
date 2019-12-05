@@ -4,6 +4,7 @@ from sqlalchemy import Column, Integer, SmallInteger
 
 db = SQLAlchemy()
 
+
 class Base(db.Model):
     __abstract__ = True
     create_time = Column(Integer, comment='create_time')

@@ -2,9 +2,10 @@ from sqlalchemy import Column, Integer, String
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.models.base import Base
+from flask_login import UserMixin
 
 
-class User(Base):
+class User(Base, UserMixin):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     username = Column(String(50), comment='用户名')
@@ -28,3 +29,8 @@ class User(Base):
         if not self._password:
             return False
         return check_password_hash(self._password, raw)
+
+    # # flask_login 要求的在用户模型内部定义的函数,定义用什么来表示用户身份
+    # 上面继承了 User
+    # def get_id(self):
+    #     return self.id
